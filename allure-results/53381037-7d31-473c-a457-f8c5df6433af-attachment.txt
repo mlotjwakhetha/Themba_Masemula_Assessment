@@ -1,0 +1,8 @@
+{
+  firstname: 'Themba',
+  lastname: 'Jenkins',
+  totalprice: 800,
+  depositpaid: true,
+  bookingdates: { checkin: '2025-09-01', checkout: '2025-09-06' },
+  additionalneeds: 'Extra Towels'
+}

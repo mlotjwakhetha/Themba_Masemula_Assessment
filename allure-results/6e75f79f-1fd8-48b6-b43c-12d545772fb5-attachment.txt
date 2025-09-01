@@ -1,0 +1,12 @@
+Auth Token: 7b25b90727ca60a
+{
+  bookingid: 2019,
+  booking: {
+    firstname: 'Themba',
+    lastname: 'Masilela',
+    totalprice: 1000,
+    depositpaid: true,
+    bookingdates: { checkin: '2025-09-09', checkout: '2019-10-10' },
+    additionalneeds: 'Breakfast'
+  }
+}
