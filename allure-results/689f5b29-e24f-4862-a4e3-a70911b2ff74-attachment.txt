@@ -1,0 +1,12 @@
+Auth Token: 445d754ef832a50
+{
+  bookingid: 1478,
+  booking: {
+    firstname: 'Hardy',
+    lastname: 'Stanton',
+    totalprice: 1000,
+    depositpaid: true,
+    bookingdates: { checkin: '2025-09-02', checkout: '2025-09-07' },
+    additionalneeds: 'Breakfast'
+  }
+}

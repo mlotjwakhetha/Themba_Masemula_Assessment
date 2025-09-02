@@ -1,0 +1,12 @@
+Auth Token: be3178f1035a1f9
+{
+  bookingid: 1493,
+  booking: {
+    firstname: 'Marjory',
+    lastname: 'Rau',
+    totalprice: 1000,
+    depositpaid: true,
+    bookingdates: { checkin: '2025-09-02', checkout: '2025-09-07' },
+    additionalneeds: 'Breakfast'
+  }
+}

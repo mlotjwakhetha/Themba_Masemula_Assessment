@@ -1,0 +1,12 @@
+Auth Token: 78a1a4ed570828e
+{
+  bookingid: 3867,
+  booking: {
+    firstname: 'Moshe',
+    lastname: 'Emard',
+    totalprice: 1000,
+    depositpaid: true,
+    bookingdates: { checkin: '2025-09-02', checkout: '2025-09-07' },
+    additionalneeds: 'Breakfast'
+  }
+}

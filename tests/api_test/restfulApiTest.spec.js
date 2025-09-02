@@ -26,26 +26,37 @@ test.describe.serial('Restful Booker Test Suite', () => {
   await apiContext.dispose();
 });
 
-test('post booking', async ({request}) => {
+test('post booking', async () => {
+     const apiContext = await request.newContext();
+     const today = new Date();
+        const checkin = today.toISOString().split('T')[0];
 
-    const response = await request.post('https://restful-booker.herokuapp.com/booking', {
+        const checkoutDate = new Date();
+        checkoutDate.setDate(today.getDate() + 5);
+        const checkout = checkoutDate.toISOString().split('T')[0];
+
+    const response = await apiContext.post('https://restful-booker.herokuapp.com/booking', {
         
         data: {
-            "firstname" : "Themba",
-            "lastname" : "Masilela",
-            "totalprice" : 1000,   
-            "depositpaid" : true,
-            "bookingdates" : {
-            "checkin" : "2025-09-09",
-        "checkout" : "2019-10-10"
+            firstname : faker.person.firstName(),
+            lastname : faker.person.lastName(),
+            totalprice : 1000,   
+            depositpaid : true,
+            bookingdates : {
+            checkin : checkin,
+            checkout : checkout
     },
-    "additionalneeds" : "Breakfast"
+    additionalneeds : "Breakfast"
         }
-    })
+    });
+     expect(response.ok()).toBeTruthy();
       expect(response.status()).toBe(200)
-      const getText = await response.text()
-     
-      console.log( await response.json())
+      //const getText = await response.text()
+      const body = await response.json();
+      console.log(body)
+
+      expect(body).toHaveProperty('bookingid');
+      bookingId = body.bookingid;
 
 
 
@@ -72,7 +83,7 @@ test('get booking', async ({request}) => {
         const checkout = checkoutDate.toISOString().split('T')[0];
 
 
- const response = await apiContext.put(`https://restful-booker.herokuapp.com/booking/1`, {
+ const response = await apiContext.put(`https://restful-booker.herokuapp.com/booking/${bookingId}`, {
 
              headers: {
             'Content-Type': 'application/json',
@@ -105,7 +116,7 @@ test('get booking', async ({request}) => {
     test('Verify booking can be deleted', async () => {
   const apiContext = await request.newContext();
 
-  const response = await apiContext.delete(`https://restful-booker.herokuapp.com/booking/2`, {
+  const response = await apiContext.delete(`https://restful-booker.herokuapp.com/booking/${bookingId}`, {
     headers: {
       'Content-Type': 'application/json',
       'Cookie': `token=${authToken}`
@@ -122,5 +133,3 @@ test('get booking', async ({request}) => {
 });
         
 });
-
-    

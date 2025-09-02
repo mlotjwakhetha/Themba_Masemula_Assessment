@@ -2,6 +2,7 @@ import {test, expect} from '@playwright/test';
 import {LoginPage} from '../../pages/login';
 import {CheckingOutPage} from '../../pages/checkout';
 import {InventoryPage} from '../../pages/inventory';
+import {faker} from '@faker-js/faker'; //
 
 test('sauceDemo', async ({page}) => {
 
@@ -14,7 +15,7 @@ test('sauceDemo', async ({page}) => {
    await Login.goto()
    await Login.login('standard_user', 'secret_sauce')
    await Inventory.inventoryInfo()
-   await Checkout.checkingOut('Themba','Masemula', '0488')
+   await Checkout.checkingOut(faker.person.firstName(), faker.person.lastName(), faker.location.zipCode())
 
    
    
